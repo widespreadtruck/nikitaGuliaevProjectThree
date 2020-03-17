@@ -129,3 +129,9 @@ body {
     }
 }
 
+//add a class that will be added to the list box
+.thisClassWillBeToggledToHighlightClientListBox {
+    background-color: rgba($color: $buttonColorSelected, $alpha: 0.2);
+    // color: rebeccapurple;
+}
+

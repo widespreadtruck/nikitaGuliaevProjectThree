@@ -294,3 +294,6 @@ body {
     height: 100%;
     padding: 0;
     margin: 0; }
+
+.thisClassWillBeToggledToHighlightClientListBox {
+  background-color: rgba(209, 119, 5, 0.2); }

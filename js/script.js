@@ -1,27 +1,51 @@
 $(function() {
-    const mondayClientList = {
-        nineToTenAmClass: [],
-        sixToSevenPmClass: []
-    }
-    // console.log(mondayClientList);
+    //array with client names
+    const weekClientList = {
+        Monday: {
+            nineToTenAmClass: [],
+            sixToSevenPmClass: []
+        }
+    };
 
-
-    //highlighting selected buttons
-    const timeSlotButtons = $(".timeSlotButtons");
-
-    timeSlotButtons.on("click", function(){
-        //highlights a button when clicked
-        $(this).toggleClass("selectedButtonChangesColor");
-
-        //
-
-
-
-        //on second click removes the highlighting
-        timeSlotButtons.not(this).removeClass("selectedButtonChangesColor");
-    });
 
     //when TimeSlotButtons is clicked, 
+    //highlight selected buttons and the client list box
+    const timeSlotButtons = $(".timeSlotButtons");
+
+    // const dayOfTheClass = function() {
+    //     for (let item in weekClientList){
+    //         console.log(item);
+    //         if (item == ){
+                    //ConditionRule;
+    //         }
+    //     }
+    // };
+
+    // $(".dayContainerHeaderBoxParagraphs").text();
+
+    timeSlotButtons.on("click", function(){
+        //highlights a time slot button when clicked
+        $(this).toggleClass("selectedButtonChangesColor");
+        //highlight the client list container when a time slot button is selected
+        $(".clientListContainer").toggleClass("thisClassWillBeToggledToHighlightClientListBox");
+        //When a time slot is selected, travel up the DOM until find the closest class="dayContainer", then traverse down until find the closest class="dayContainerHeaderBoxParagraphs" and copy the text - Day of the week.
+        const grabsTheClosestDayValue = $(this).closest(".dayContainer").find(".dayContainerHeaderBoxParagraphs").text();
+        //copy the time period from the button
+        const timeOfClass = $(this).text();
+        console.log(grabsTheClosestDayValue);
+        console.log(timeOfClass);
+        //insert the Day and Time values in the Header of the client list container
+        $(".dayOfTheClassOnClientList").text(grabsTheClosestDayValue).css("color", "rebeccapurple");
+        $(".classTimeSlot").text(timeOfClass).css("color", "rebeccapurple");
+
+        
+
+
+        //on second click removes the highlighting of the selected TimeSlot button & the client list container
+        timeSlotButtons.not(this).removeClass("selectedButtonChangesColor");
+        // .removeClass("thisClassWillBeDisplayedInTheHeaderOfClientListBox");
+    });
+
 
 
 
@@ -40,14 +64,14 @@ $(function() {
         const grabbedClientName = askForClientName();
 
         //add grabbed name to an array
-        mondayClientList.nineToTenAmClass.push(grabbedClientName);
+        weekClientList.monday.nineToTenAmClass.push(grabbedClientName);
         
         //print the last name added to an array inside of the ClientList box
-        $(".namesAddedToTimeSlotSoFar").append(`<li>${mondayClientList.nineToTenAmClass[mondayClientList.nineToTenAmClass.length - 1]}</li>`);
+        $(".namesAddedToTimeSlotSoFar").append(`<li>${weekClientList.monday.nineToTenAmClass[weekClientList.monday.nineToTenAmClass.length - 1]}</li>`);
 
         //6 ppl is the max, so when the array's length reaches 6, the TimeSlot turns red.
-        if (mondayClientList.nineToTenAmClass.length === 6) {
-
+        if (weekClientList.monday.nineToTenAmClass.length === 6) {
+            alert("Class is full. Congratulations!");
         }
 
 
