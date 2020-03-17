@@ -1,24 +1,63 @@
 $(function() {
-    console.log("hi");
-    // const mondayClientList = {
-    //     nineToTenAmClass: [],
-    //     sixToSevenPmClass: []
-    // }
+    const mondayClientList = {
+        nineToTenAmClass: [],
+        sixToSevenPmClass: []
+    }
+    // console.log(mondayClientList);
+
 
     //highlighting selected buttons
-    // const timeSlotButtons = $(".timeSlotButtons");
+    const timeSlotButtons = $(".timeSlotButtons");
 
-    $(".timeSlotButtons").on("click", function(){
+    timeSlotButtons.on("click", function(){
         //highlights a button when clicked
         $(this).toggleClass("selectedButtonChangesColor");
 
+        //
+
+
+
         //on second click removes the highlighting
-        $(".timeSlotButtons").not(this).removeClass("selectedButtonChangesColor");
+        timeSlotButtons.not(this).removeClass("selectedButtonChangesColor");
     });
 
-    // $(".addClientButton").on("click", function(){
-    //     const clientNameThatWillBeAddedToArray = prompt("Type in client's name");
-    // })
+    //when TimeSlotButtons is clicked, 
+
+
+
+
+
+
+    const askForClientName = function() {
+        return prompt("Type in client's name");
+    }
+
+    $(".addClientButton").on("click", function(event){
+        //preventing default
+        event.preventDefault();
+
+        //grab name from prompt
+        const grabbedClientName = askForClientName();
+
+        //add grabbed name to an array
+        mondayClientList.nineToTenAmClass.push(grabbedClientName);
+        
+        //print the last name added to an array inside of the ClientList box
+        $(".namesAddedToTimeSlotSoFar").append(`<li>${mondayClientList.nineToTenAmClass[mondayClientList.nineToTenAmClass.length - 1]}</li>`);
+
+        //6 ppl is the max, so when the array's length reaches 6, the TimeSlot turns red.
+        if (mondayClientList.nineToTenAmClass.length === 6) {
+
+        }
+
+
+        
+
+        
+
+        
+
+    })
 
 
 
