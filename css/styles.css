@@ -297,3 +297,6 @@ body {
 
 .thisClassWillBeToggledToHighlightClientListBox {
   background-color: rgba(209, 119, 5, 0.2); }
+
+.hiddenClassForArray {
+  display: none; }

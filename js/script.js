@@ -7,12 +7,20 @@ $(function() {
         }
     };
 
+    //"ADD CLIENT" button selector
+    const addClientButton = $(".addClientButton");
     
-
-
-    //when TimeSlotButtons is clicked, 
-    //highlight selected buttons and the client list box
+    // "Time Slot" button selector 
     const timeSlotButtons = $(".timeSlotButtons");
+
+    //day of the week that shows up in Client List box
+    const selectSpanForDay = $(".dayOfTheClassOnClientList");
+
+    //time of the class that shows up in Client List box
+    const selectSpanForTime = $(".classTimeSlot");
+
+
+
 
     timeSlotButtons.on("click", function(){
         //highlights a time slot button when clicked
@@ -29,14 +37,29 @@ $(function() {
         if (timeSlotButtonsBackgroundColor === "rgb(209, 119, 5)"){
             $(".clientListContainer").css("background-color", "rgba(209, 119, 5, 0.2)");
             //insert the Day and Time values in the Header of the client list container
-            $(".dayOfTheClassOnClientList").text(grabsTheClosestDayValue).css("color", "rebeccapurple");
-            $(".classTimeSlot").text(timeOfClass).css("color", "rebeccapurple");
-            $(".addClientButton").attr("disabled", false);
+            
+            
+            
+            
+        //need to check if working. Text() was copying the display hidden text.
+        //see if html() is respecting css properties
+        //replaced text() with html()
+            selectSpanForDay.html(grabsTheClosestDayValue).css("color", "rebeccapurple");
+            selectSpanForTime.html(timeOfClass).css("color", "rebeccapurple");
+
+
+
+
+
+
+
+
+            addClientButton.attr("disabled", false);
         } else {
             $(".clientListContainer").css("background-color", "transparent");
             $(".dayOfTheClassOnClientList").empty();
             $(".classTimeSlot").empty();  
-            $(".addClientButton").attr("disabled", true);
+            addClientButton.attr("disabled", true);
         };
 
         //removes the highlighting of all other TimeSlot buttons  when one is highlighted
@@ -46,15 +69,15 @@ $(function() {
 
 
 
+
+
+
+
     const askForClientName = function () {
         return prompt("Type in client's name");
     }
-    const addClientButton = $(".addClientButton");
 
-
-
-
-    //when "ADD CLIENT" button is clicked 
+    //when "ADD CLIENT" button is clicked ask for a prompt and add the entered value to an array, as well as display this name in the Client List box
     addClientButton.on("click", function(event){
         //preventing default
         event.preventDefault();
@@ -62,19 +85,48 @@ $(function() {
         //grab name from prompt
         const grabbedClientName = askForClientName();
 
+        const dayForTheArrayNavigation = $(selectSpanForDay).text();
+        console.log(dayForTheArrayNavigation); //Monday
+
+
+
+
+
+
+        //find the highlighted button and traverse down to find the hidden span with class time for the array and copy it
+        //need to check if working
+
+        const timeForTheArrayNavigation = $(".selectedButtonChangesColor").find(".hiddenClassForArray").text();
+        console.log(timeForTheArrayNavigation);
+
+
+
+
+
+
+
+
         //add grabbed name to an array
-        weekClientList.Monday.nineToTenAmClass.push(grabbedClientName);
+        weekClientList[dayForTheArrayNavigation].nineToTenAmClass.push(grabbedClientName);
         
         //print the last name added to an array inside of the ClientList box
-        $(".namesAddedToTimeSlotSoFar").append(`<li>${weekClientList.Monday.nineToTenAmClass[weekClientList.Monday.nineToTenAmClass.length - 1]}</li>`);
+        $(".namesAddedToTimeSlotSoFar").append(`<li>${weekClientList[dayForTheArrayNavigation].nineToTenAmClass[weekClientList[dayForTheArrayNavigation].nineToTenAmClass.length - 1]}</li>`);
+
+        console.log(weekClientList.Monday);
 
         //6 ppl is the max, so when the array's length reaches 6, the TimeSlot turns red.
         if (weekClientList.Monday.nineToTenAmClass.length === 6) {
             alert("Class is full. Congratulations!");
         }
-
-
     })
+
+//copy IMPORTANT!!!!!!!!!!!!!!!!!
+    // $(".namesAddedToTimeSlotSoFar").append(`<li>${weekClientList.Monday.nineToTenAmClass[weekClientList.Monday.nineToTenAmClass.length - 1]}</li>`);
+//copy IMPORTANT!!!!!!!!!!!!!!!!!
+
+
+
+
 
 
 
