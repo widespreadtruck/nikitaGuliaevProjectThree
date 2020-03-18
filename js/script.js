@@ -7,6 +7,8 @@ $(function() {
         }
     };
 
+    
+
 
     //when TimeSlotButtons is clicked, 
     //highlight selected buttons and the client list box
@@ -18,56 +20,47 @@ $(function() {
         //highlight the client list container when a time slot button is selected
 
         //When a time slot is selected, travel up the DOM until find the closest class="dayContainer", then traverse down until find the closest class="dayContainerHeaderBoxParagraphs" and copy the text - Day of the week.
-        
         const grabsTheClosestDayValue = $(this).closest(".dayContainer").find(".dayContainerHeaderBoxParagraphs").text();
-        //copy the time period from the button
+        //When a time slot is selected, copy the time period written on the Time Slot button
         const timeOfClass = $(this).text();
 
-        console.log("");
-
-        if ($(this).css("background-color") == "rgb(209, 119, 5)"){
+        //when the Time Slot button is selected and changes color, highlight the Client List container and populate "Time" & "Class" fields in the header
+        const timeSlotButtonsBackgroundColor = $(this).css("background-color");
+        if (timeSlotButtonsBackgroundColor === "rgb(209, 119, 5)"){
             $(".clientListContainer").css("background-color", "rgba(209, 119, 5, 0.2)");
             //insert the Day and Time values in the Header of the client list container
             $(".dayOfTheClassOnClientList").text(grabsTheClosestDayValue).css("color", "rebeccapurple");
             $(".classTimeSlot").text(timeOfClass).css("color", "rebeccapurple");
+            // $(".addClientButton").disabled = false;
         } else {
             $(".clientListContainer").css("background-color", "transparent");
             $(".dayOfTheClassOnClientList").empty();
-            $(".classTimeSlot").empty();                       
-        }
+            $(".classTimeSlot").empty();  
+            // $(".addClientButton").disabled = true;                     
+        };
 
-        // $(this).toggle(function(){
-        // }, function(){
-        //     //remove highlighting of client list container
-        //     $(".clientListContainer").toggleClass("thisClassWillBeToggledToHighlightClientListBox");
-            
-        //     $(".dayOfTheClassOnClientList").text();
-            
-        //     $(".classTimeSlot").text();
+        //when a Time Slot button is highlighted AND the "ADD CLIENT" button is clicked, add names to the appropriate array
+        // if (timeSlotButtonsBackgroundColor === "rgb(209, 119, 5)" && ) {
 
-        // })
+        // }
 
-
-
-        console.log(grabsTheClosestDayValue);
-        console.log(timeOfClass);
-
-        //on second click removes the highlighting of the selected TimeSlot button & the client list container
+        //removes the highlighting of all other TimeSlot buttons  when one is highlighted
         timeSlotButtons.not(this).removeClass("selectedButtonChangesColor");
     });
 
 
 
 
-
-
-
-    const askForClientName = function() {
+    const askForClientName = function () {
         return prompt("Type in client's name");
     }
+    const addClientButton = $(".addClientButton");
+
+
+
 
     //when "ADD CLIENT" button is clicked 
-    $(".addClientButton").on("click", function(event){
+    addClientButton.on("click", function(event){
         //preventing default
         event.preventDefault();
 
