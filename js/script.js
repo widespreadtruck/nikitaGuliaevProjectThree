@@ -31,18 +31,13 @@ $(function() {
             //insert the Day and Time values in the Header of the client list container
             $(".dayOfTheClassOnClientList").text(grabsTheClosestDayValue).css("color", "rebeccapurple");
             $(".classTimeSlot").text(timeOfClass).css("color", "rebeccapurple");
-            // $(".addClientButton").disabled = false;
+            $(".addClientButton").attr("disabled", false);
         } else {
             $(".clientListContainer").css("background-color", "transparent");
             $(".dayOfTheClassOnClientList").empty();
             $(".classTimeSlot").empty();  
-            // $(".addClientButton").disabled = true;                     
+            $(".addClientButton").attr("disabled", true);
         };
-
-        //when a Time Slot button is highlighted AND the "ADD CLIENT" button is clicked, add names to the appropriate array
-        // if (timeSlotButtonsBackgroundColor === "rgb(209, 119, 5)" && ) {
-
-        // }
 
         //removes the highlighting of all other TimeSlot buttons  when one is highlighted
         timeSlotButtons.not(this).removeClass("selectedButtonChangesColor");
