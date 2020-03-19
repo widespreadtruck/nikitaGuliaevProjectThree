@@ -44,8 +44,8 @@ $(function() {
         //need to check if working. Text() was copying the display hidden text.
         //see if html() is respecting css properties
         //replaced text() with html()
-            selectSpanForDay.html(grabsTheClosestDayValue).css("color", "rebeccapurple");
-            selectSpanForTime.html(timeOfClass).css("color", "rebeccapurple");
+            selectSpanForDay.text(grabsTheClosestDayValue).css("color", "rebeccapurple");
+            selectSpanForTime.text(timeOfClass).css("color", "rebeccapurple");
 
 
 
@@ -96,8 +96,10 @@ $(function() {
         //find the highlighted button and traverse down to find the hidden span with class time for the array and copy it
         //need to check if working
 
-        const timeForTheArrayNavigation = $(".selectedButtonChangesColor").find(".hiddenClassForArray").text();
-        console.log(timeForTheArrayNavigation);
+        const timeForTheArrayNavigation = $(".selectedButtonChangesColor").closest(".additonalClassForClosestMethod").find(".hiddenClassForArray").text();
+        console.log(timeForTheArrayNavigation); //nineToTenAmClass
+
+
 
 
 
@@ -107,10 +109,10 @@ $(function() {
 
 
         //add grabbed name to an array
-        weekClientList[dayForTheArrayNavigation].nineToTenAmClass.push(grabbedClientName);
+        weekClientList[dayForTheArrayNavigation][timeForTheArrayNavigation].push(grabbedClientName);
         
         //print the last name added to an array inside of the ClientList box
-        $(".namesAddedToTimeSlotSoFar").append(`<li>${weekClientList[dayForTheArrayNavigation].nineToTenAmClass[weekClientList[dayForTheArrayNavigation].nineToTenAmClass.length - 1]}</li>`);
+        $(".namesAddedToTimeSlotSoFar").append(`<li>${weekClientList[dayForTheArrayNavigation][timeForTheArrayNavigation][weekClientList[dayForTheArrayNavigation][timeForTheArrayNavigation].length - 1]}</li>`);
 
         console.log(weekClientList.Monday);
 
