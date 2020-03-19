@@ -13,11 +13,14 @@ $(function() {
     // "Time Slot" button selector 
     const timeSlotButtons = $(".timeSlotButtons");
 
-    //day of the week that shows up in Client List box
+    //"Day:" selector in Client List box
     const selectSpanForDay = $(".dayOfTheClassOnClientList");
 
-    //time of the class that shows up in Client List box
+    //"Class:" selector in Client List box
     const selectSpanForTime = $(".classTimeSlot");
+
+    //body of the Client LIst container where names are printed
+    const placeForTheListOfClients = $(".namesAddedToTimeSlotSoFar");
 
 
 
@@ -64,6 +67,9 @@ $(function() {
 
         //removes the highlighting of all other TimeSlot buttons  when one is highlighted
         timeSlotButtons.not(this).removeClass("selectedButtonChangesColor");
+
+        placeForTheListOfClients.empty();
+
     });
 
 
@@ -85,8 +91,8 @@ $(function() {
         //grab name from prompt
         const grabbedClientName = askForClientName();
 
-        const dayForTheArrayNavigation = $(selectSpanForDay).text();
-        console.log(dayForTheArrayNavigation); //Monday
+        const dayForTheArrayNavigation = $(".selectedButtonChangesColor").closest(".dayContainer").find(".dayContainerHeaderBoxParagraphs").text();
+        // console.log(dayForTheArrayNavigation); //Monday
 
 
 
@@ -97,7 +103,7 @@ $(function() {
         //need to check if working
 
         const timeForTheArrayNavigation = $(".selectedButtonChangesColor").closest(".additonalClassForClosestMethod").find(".hiddenClassForArray").text();
-        console.log(timeForTheArrayNavigation); //nineToTenAmClass
+        // console.log(timeForTheArrayNavigation); //nineToTenAmClass
 
 
 
@@ -109,36 +115,38 @@ $(function() {
 
 
         //add grabbed name to an array
-        weekClientList[dayForTheArrayNavigation][timeForTheArrayNavigation].push(grabbedClientName);
+        const arrayPathThreeLevelsDeep = weekClientList[dayForTheArrayNavigation][timeForTheArrayNavigation];
+
+        arrayPathThreeLevelsDeep.push(grabbedClientName);
+        console.log(arrayPathThreeLevelsDeep);
         
-        //print the last name added to an array inside of the ClientList box
-        $(".namesAddedToTimeSlotSoFar").append(`<li>${weekClientList[dayForTheArrayNavigation][timeForTheArrayNavigation][weekClientList[dayForTheArrayNavigation][timeForTheArrayNavigation].length - 1]}</li>`);
 
-        console.log(weekClientList.Monday);
+        
 
-        //6 ppl is the max, so when the array's length reaches 6, the TimeSlot turns red.
-        if (weekClientList.Monday.nineToTenAmClass.length === 6) {
+        //show list ONLY when Day: & Time: are showing
+
+
+        const timeOnTheTimeSlotButton = $(".selectedButtonChangesColor").closest(".timeSlotButtons").text();
+        console.log(timeOnTheTimeSlotButton);
+
+
+        placeForTheListOfClients.empty();
+
+        if (dayForTheArrayNavigation == selectSpanForDay.text() && timeOnTheTimeSlotButton == selectSpanForTime.text()) {
+            for (let i = 0; i < arrayPathThreeLevelsDeep.length; i++) {
+                placeForTheListOfClients.append(`<li>${arrayPathThreeLevelsDeep[i]}</li>`);
+            }
+        } else {
+            placeForTheListOfClients.empty();
+        }
+
+        // console.log(arrayPathThreeLevelsDeep.length);
+        if (arrayPathThreeLevelsDeep.length === 6) {
             alert("Class is full. Congratulations!");
         }
     })
 
-//copy IMPORTANT!!!!!!!!!!!!!!!!!
-    // $(".namesAddedToTimeSlotSoFar").append(`<li>${weekClientList.Monday.nineToTenAmClass[weekClientList.Monday.nineToTenAmClass.length - 1]}</li>`);
-//copy IMPORTANT!!!!!!!!!!!!!!!!!
 
 
-
-
-
-
-
-    //create a box that represents one day of a calendar (e.g. "Monday") using css. 
-    //Let's say "Monday" has 2 classes available for booking - they look like 2 green buttons that say how many people already signed up for that class e.g. "2/6" -means two people signed up. 6 ppl per class maximum.
-
-    //when the user taps on a green button - an empty box below is being populated with the following: 1)Date and time of the class 2)List of people (gets extracted from an array) who signed up for a class
-    //when user taps on the "ADD NAME" button a prompt pops up asking for "Client's name"
-    //name is added to the array (using .push()) which holds up to 6 people
-    //when the class is full (6 names on the list) the green button becomes red (use condition statements) and a "sold out" sign appears on the button, which becomes inactive. 
-    //when the length of the array is = 6, a new class is added to the button that represents a time slot
 
 });
