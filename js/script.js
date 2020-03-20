@@ -22,8 +22,19 @@ $(function() {
     //body of the Client LIst container where names are printed
     const placeForTheListOfClients = $(".namesAddedToTimeSlotSoFar");
 
+    const dayForTheArrayNavigation = $(".selectedButtonChangesColor").closest(".dayContainer").find(".dayContainerHeaderBoxParagraphs").text();
+        // console.log(dayForTheArrayNavigation); //Monday
 
+    const timeForTheArrayNavigation = $(".selectedButtonChangesColor").closest(".additonalClassForClosestMethod").find(".hiddenClassForArray").text();
+        // console.log(timeForTheArrayNavigation); //nineToTenAmClass
 
+        //copies "9am-10am | 0/6" when a time slot
+    const timeOnTheTimeSlotButton = $(".selectedButtonChangesColor").closest(".timeSlotButtons").text();
+
+    const checkingBackgroundColor = $(".timeSlotButtons").css("background-color");
+
+        //add grabbed name to an array
+    const arrayPathThreeLevelsDeep = weekClientList[dayForTheArrayNavigation][timeForTheArrayNavigation];
 
     timeSlotButtons.on("click", function(){
         //highlights a time slot button when clicked
@@ -41,21 +52,8 @@ $(function() {
             $(".clientListContainer").css("background-color", "rgba(209, 119, 5, 0.2)");
             //insert the Day and Time values in the Header of the client list container
             
-            
-            
-            
-        //need to check if working. Text() was copying the display hidden text.
-        //see if html() is respecting css properties
-        //replaced text() with html()
             selectSpanForDay.text(grabsTheClosestDayValue).css("color", "rebeccapurple");
             selectSpanForTime.text(timeOfClass).css("color", "rebeccapurple");
-
-
-
-
-
-
-
 
             addClientButton.attr("disabled", false);
         } else {
@@ -64,6 +62,15 @@ $(function() {
             $(".classTimeSlot").empty();  
             addClientButton.attr("disabled", true);
         };
+
+        if (dayForTheArrayNavigation == selectSpanForDay.text() && timeOnTheTimeSlotButton == selectSpanForTime.text() && checkingBackgroundColor == "rgb(209, 119, 5)") {
+            for (let i = 0; i < arrayPathThreeLevelsDeep.length; i++) {
+                placeForTheListOfClients.append(`<li>${arrayPathThreeLevelsDeep[i]}</li>`);
+            }
+        } else {
+            placeForTheListOfClients.empty();
+        }
+
 
         //removes the highlighting of all other TimeSlot buttons  when one is highlighted
         timeSlotButtons.not(this).removeClass("selectedButtonChangesColor");
@@ -91,8 +98,8 @@ $(function() {
         //grab name from prompt
         const grabbedClientName = askForClientName();
 
-        const dayForTheArrayNavigation = $(".selectedButtonChangesColor").closest(".dayContainer").find(".dayContainerHeaderBoxParagraphs").text();
-        // console.log(dayForTheArrayNavigation); //Monday
+        // const dayForTheArrayNavigation = $(".selectedButtonChangesColor").closest(".dayContainer").find(".dayContainerHeaderBoxParagraphs").text();
+        // // console.log(dayForTheArrayNavigation); //Monday
 
 
 
@@ -102,8 +109,8 @@ $(function() {
         //find the highlighted button and traverse down to find the hidden span with class time for the array and copy it
         //need to check if working
 
-        const timeForTheArrayNavigation = $(".selectedButtonChangesColor").closest(".additonalClassForClosestMethod").find(".hiddenClassForArray").text();
-        // console.log(timeForTheArrayNavigation); //nineToTenAmClass
+        // const timeForTheArrayNavigation = $(".selectedButtonChangesColor").closest(".additonalClassForClosestMethod").find(".hiddenClassForArray").text();
+        // // console.log(timeForTheArrayNavigation); //nineToTenAmClass
 
 
 
@@ -115,7 +122,7 @@ $(function() {
 
 
         //add grabbed name to an array
-        const arrayPathThreeLevelsDeep = weekClientList[dayForTheArrayNavigation][timeForTheArrayNavigation];
+        // const arrayPathThreeLevelsDeep = weekClientList[dayForTheArrayNavigation][timeForTheArrayNavigation];
 
         arrayPathThreeLevelsDeep.push(grabbedClientName);
         console.log(arrayPathThreeLevelsDeep);
@@ -126,19 +133,21 @@ $(function() {
         //show list ONLY when Day: & Time: are showing
 
 
-        const timeOnTheTimeSlotButton = $(".selectedButtonChangesColor").closest(".timeSlotButtons").text();
+        // const timeOnTheTimeSlotButton = $(".selectedButtonChangesColor").closest(".timeSlotButtons").text();
         console.log(timeOnTheTimeSlotButton);
 
+        // const checkingBackgroundColor = $(".timeSlotButtons").css("background-color");
 
         placeForTheListOfClients.empty();
+        console.log(testTest);
 
-        if (dayForTheArrayNavigation == selectSpanForDay.text() && timeOnTheTimeSlotButton == selectSpanForTime.text()) {
-            for (let i = 0; i < arrayPathThreeLevelsDeep.length; i++) {
-                placeForTheListOfClients.append(`<li>${arrayPathThreeLevelsDeep[i]}</li>`);
-            }
-        } else {
-            placeForTheListOfClients.empty();
-        }
+        // if (dayForTheArrayNavigation == selectSpanForDay.text() && timeOnTheTimeSlotButton == selectSpanForTime.text() && checkingBackgroundColor == "rgb(209, 119, 5)") {
+        //     for (let i = 0; i < arrayPathThreeLevelsDeep.length; i++) {
+        //         placeForTheListOfClients.append(`<li>${arrayPathThreeLevelsDeep[i]}</li>`);
+        //     }
+        // } else {
+        //     placeForTheListOfClients.empty();
+        // }
 
         // console.log(arrayPathThreeLevelsDeep.length);
         if (arrayPathThreeLevelsDeep.length === 6) {
