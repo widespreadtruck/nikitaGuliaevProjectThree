@@ -4,6 +4,10 @@ $(function() {
         Monday: {
             nineToTenAmClass: [],
             sixToSevenPmClass: []
+        },
+        Tuesday: {
+            nineToTenAmClass: [],
+            sixToSevenPmClass: []           
         }
     };
 
@@ -25,6 +29,7 @@ $(function() {
 
 
 
+
     timeSlotButtons.on("click", function(){
         //highlights a time slot button when clicked
         $(this).toggleClass("selectedButtonChangesColor");
@@ -41,21 +46,8 @@ $(function() {
             $(".clientListContainer").css("background-color", "rgba(209, 119, 5, 0.2)");
             //insert the Day and Time values in the Header of the client list container
             
-            
-            
-            
-        //need to check if working. Text() was copying the display hidden text.
-        //see if html() is respecting css properties
-        //replaced text() with html()
             selectSpanForDay.text(grabsTheClosestDayValue).css("color", "rebeccapurple");
             selectSpanForTime.text(timeOfClass).css("color", "rebeccapurple");
-
-
-
-
-
-
-
 
             addClientButton.attr("disabled", false);
         } else {
@@ -94,24 +86,10 @@ $(function() {
         const dayForTheArrayNavigation = $(".selectedButtonChangesColor").closest(".dayContainer").find(".dayContainerHeaderBoxParagraphs").text();
         // console.log(dayForTheArrayNavigation); //Monday
 
-
-
-
-
-
         //find the highlighted button and traverse down to find the hidden span with class time for the array and copy it
         //need to check if working
-
         const timeForTheArrayNavigation = $(".selectedButtonChangesColor").closest(".additonalClassForClosestMethod").find(".hiddenClassForArray").text();
         // console.log(timeForTheArrayNavigation); //nineToTenAmClass
-
-
-
-
-
-
-
-
 
 
         //add grabbed name to an array
@@ -120,17 +98,14 @@ $(function() {
         arrayPathThreeLevelsDeep.push(grabbedClientName);
         console.log(arrayPathThreeLevelsDeep);
         
-
-        
-
         //show list ONLY when Day: & Time: are showing
-
-
         const timeOnTheTimeSlotButton = $(".selectedButtonChangesColor").closest(".timeSlotButtons").text();
         console.log(timeOnTheTimeSlotButton);
 
+        // const testTest = $(".timeSlotButtons").css("background-color");
 
         placeForTheListOfClients.empty();
+        // console.log(testTest);
 
         if (dayForTheArrayNavigation == selectSpanForDay.text() && timeOnTheTimeSlotButton == selectSpanForTime.text()) {
             for (let i = 0; i < arrayPathThreeLevelsDeep.length; i++) {
@@ -139,14 +114,11 @@ $(function() {
         } else {
             placeForTheListOfClients.empty();
         }
-
         // console.log(arrayPathThreeLevelsDeep.length);
         if (arrayPathThreeLevelsDeep.length === 6) {
             alert("Class is full. Congratulations!");
         }
     })
-
-
 
 
 });
