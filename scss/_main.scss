@@ -2,11 +2,12 @@
     border: 1px solid red;
 }
 
-$buttonColorAvailableForSignUp: #0de55a; 
-$buttonColorSelected: #d17705; 
+$buttonColorAvailableForSignUp: rgb(13, 229, 90); 
+$buttonColorSelected: rgb(209, 119, 5); 
 
 html {
     font-size: 62.5%;
+    font-size: 0.8rem;
 }
 
 body {
@@ -15,37 +16,45 @@ body {
     margin-top: 2rem;
     // height: 100vh;
     background-color: rgba($color: #efface, $alpha: 1.0);
-    width: 90%;
     // margin: 0 auto;
-    text-align: left;
+    // text-align: left;
     // transition: all 2s;
-    max-width: 33.75rem;
+    // max-width: 33.75rem;
     .pageTitle {
         h1 {
-            margin: 0;
+            margin: 2rem 0;
             padding: 0;
             text-align: center;
+            // margin-top: 2rem;
         }
     }
 }
 
 // two box styles + header of the boxes
 .wrapper {
+    // @include border;
+    // width: 90%;
+    // text-align: center;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    flex-direction: column;
+    // justify-content: space-evenly;
+    // text-align: center;
+    // align-content: center;
+    align-items: center;
+    // flex-wrap: wrap;
 }
 
 .dayContainer, .clientListContainer {
     border: 1px solid black;
-    width: 16.5rem;
+    width: 30rem;
     height: 20rem;
+    font-size: 1.6rem;
 }
 
 .dayContainer {
     // flex: 1 0 40%;
-    margin-right: 0.75rem;
+    // margin-right: 0.75rem;
+    margin-bottom: 2rem;
     .dayContainerHeaderBox {
         display: flex;
         flex-direction: row;
@@ -65,8 +74,8 @@ body {
         flex-direction: column;
         justify-content: center;
         // align-content: flex-start;
-        text-align: left;
-        padding-left: 4rem;
+        text-align: center;
+        // padding-left: 4rem;
         .clientListContainerHeaderBoxParagraphs {
             margin: 0;
             padding: 0;
@@ -76,7 +85,7 @@ body {
 
 .dayContainerHeaderBox, .clientListContainerHeaderBox {
     border-bottom: 1px solid black;
-    height: 4rem;
+    height: 5rem;
 }
 
 
@@ -87,26 +96,31 @@ body {
     // align-items: center;
     // align-content: center;
     //why don't boxes react to align-content: space-between???
+    height: 100%;
     .dayContainerBodyBoxButtons {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        // align-content: flex-end;
+        align-items: center;
         // margin-bottom: 2rem;
         // @include border;
-        height: 16rem;
+        height: 15rem;
+        width: 100%;
         // display: block;
         // align-items: center;
         .timeSlotButtons {
             height: 4rem;
+            // @include border;
             // text-align: center;
-            width: 100%;
+            width: 20rem;
             border-radius: 0.7rem;
             // display: block;
             background-color: $buttonColorAvailableForSignUp;
+            color: black;
         }
     }
 }
+
 
 
 //toggleClass that highlights the selected time slot
@@ -116,16 +130,21 @@ body {
 
 //add name button styles
 .addClientNameButtonContainer {
-    display: block;
-    margin-top: 1rem;
-    // margin-left: 1rem;
-    width: 10rem;
-    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    // margin-top: 2rem;
+    margin: 2rem auto;
+    width: 14rem;
+    height: 4rem;
+    padding: 0;
     .addClientButton {
         width: 100%;
         height: 100%;
         padding: 0;
         margin: 0;
+        border-radius: 0.5rem;
+        font-size: 1.4rem;
     }
 }
 
