@@ -3,8 +3,8 @@ $(function() {
     //array with client names
     const weekClientList = {
         Monday: {
-            nineToTenAmClass: ["test1.1", "test1.2"],
-            sixToSevenPmClass: ["test2.1", "test2.2"]
+            nineToTenAmClass: [],
+            sixToSevenPmClass: []
         },
         Tuesday: {
             nineToTenAmClass: [],
@@ -80,46 +80,56 @@ $(function() {
             };
 
 
-            addClientButton.on("click", function (event) {
+            addClientButton.off().on("click", function (event) {
                 //preventing default
                 event.preventDefault();
                 //DO I NEED a "PREVENTDEFAULT" HERE?
 
                 console.log(event.target);
                 const askForClientName = function () {
-                    prompt("Type in client's name");
+                    return prompt("Type in client's name");
                 };
 
                 //grabs name from prompt
                 const grabbedClientName = askForClientName();
 
-                // //adds the grabbed name to the array
-                // arrayPathThreeLevelsDeep.push(grabbedClientName);
-                // console.log(grabbedClientName);
-                // console.log(arrayPathThreeLevelsDeep);
+                //adds the grabbed name to the array
+                arrayPathThreeLevelsDeep.push(grabbedClientName);
+                console.log(grabbedClientName);
+                console.log(arrayPathThreeLevelsDeep);
 
-                // // placeForTheListOfClients.empty();
+                // placeForTheListOfClients.empty();
 
-                // const arrayLength = arrayPathThreeLevelsDeep.length - 1;
-                // console.log(`arrayLength: ${arrayLength}`);
-                // placeForTheListOfClients.append(`<li>${arrayPathThreeLevelsDeep[arrayLength]}</li>`);
+                const arrayLength = arrayPathThreeLevelsDeep.length - 1;
+                console.log(`arrayLength: ${arrayLength}`);
+                placeForTheListOfClients.append(`<li>${arrayPathThreeLevelsDeep[arrayLength]}</li>`);
 
-                // if (arrayPathThreeLevelsDeep.length === 6) {
-                //     alert("Class is full. Congratulations!");
-                // };
-                // console.log(arrayPathThreeLevelsDeep.length);
+                classFullMessage(arrayPathThreeLevelsDeep);
             });
 
         } else {
-            $(".clientListContainer").css("background-color", "transparent");
-            selectSpanForDay.empty();
-            selectSpanForTime.empty();
-            addClientButton.attr("disabled", true);
-            placeForTheListOfClients.empty();
-            
+            removeStyles();
         };
     });
+
+
+
+    //shows a message when 6 names are added to an array
+    const classFullMessage = function(array) {
+        if (array.length === 6) {
+            alert("Class is full. Congratulations!");
+        };
+    }
+
+
+
+    //removes all styles and popuated fields from the Client List Box
+    const removeStyles = function() {
+        $(".clientListContainer").css("background-color", "transparent");
+        selectSpanForDay.empty();
+        selectSpanForTime.empty();
+        addClientButton.attr("disabled", true);
+        placeForTheListOfClients.empty();
+    }
+//end of docready
 });
-
-
-//why am I getting prompt three times in a row?
