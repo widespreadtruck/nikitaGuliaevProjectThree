@@ -2624,7 +2624,8 @@ body {
   border: 1px solid black;
   width: 30rem;
   height: 20rem;
-  font-size: 1.6rem; }
+  font-size: 1.6rem;
+  border-radius: 0.5rem; }
 
 .dayContainer {
   margin-bottom: 2rem; }
