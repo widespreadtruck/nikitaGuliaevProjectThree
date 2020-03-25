@@ -10,6 +10,7 @@ $(function() {
             nineToTenAmClass: [],
             sixToSevenPmClass: []           
         }
+        //TRY TAKING THE ARRAY INSIDE A FUNCTION/EVENT LISTENER
     };
 
     // "Time Slot" button selector 
@@ -26,7 +27,6 @@ $(function() {
 
     //body of the Client LIst container where names are printed
     const placeForTheListOfClients = $(".namesAddedToTimeSlotSoFar");
-
 
 
 
@@ -55,14 +55,15 @@ $(function() {
             console.log(`timeForTheArrayNavigation: ${timeForTheArrayNavigation}`); //nineToTenAmClass
 
             //find and save a text node representing the text written on the selected button:
-            const timeOnTheTimeSlotButton = $(".selectedButtonChangesColor").closest(".timeSlotButtons").text();
+            const timeOnTheTimeSlotButton = $(".selectedButtonChangesColor").closest(".timeSlotButtons").find(".times").text();
             console.log(`timeOnTheTimeSlotButton: ${timeOnTheTimeSlotButton}`); //9am-10am | 0/6
     
     
             const arrayPathThreeLevelsDeep = weekClientList[dayForTheArrayNavigation][timeForTheArrayNavigation];
             console.log(arrayPathThreeLevelsDeep);
 
-            $(".clientListContainer").css("background-color", "rgba(209, 119, 5, 0.2)");
+            $(".clientListContainer").css("background-color", "rgba(209, 119, 5, 0.1)");
+            // $(".clientListContainerHeaderBox").css("border-bottom", "1px solid black");
             // //insert the Day and Time values in the Header of the client list container
             // // console.log(`timeSlotButtonsBackgroundColor: ${timeSlotButtonsBackgroundColor}`);
             // //rgb(209, 119, 5)
@@ -98,26 +99,29 @@ $(function() {
                 console.log(grabbedClientName);
                 console.log(arrayPathThreeLevelsDeep);
 
-                // placeForTheListOfClients.empty();
-
+                //show how many people are signed up for a particular class
+                $(".selectedButtonChangesColor").closest(".timeSlotButtons").find(".counters").text(`${arrayPathThreeLevelsDeep.length}/6`);
+                
                 const arrayLength = arrayPathThreeLevelsDeep.length - 1;
-                console.log(`arrayLength: ${arrayLength}`);
                 placeForTheListOfClients.append(`<li>${arrayPathThreeLevelsDeep[arrayLength]}</li>`);
-
+                
                 classFullMessage(arrayPathThreeLevelsDeep);
             });
-
+            
         } else {
             removeStyles();
         };
     });
-
-
-
+    
+    
+    
     //shows a message when 6 names are added to an array
     const classFullMessage = function(array) {
         if (array.length === 6) {
+            // when the class is full (6ppl max) show a message "Class is full" 
+            //and show the SOLD sign
             alert("Class is full. Congratulations!");
+            $(".selectedButtonChangesColor").closest(".additonalClassForClosestMethod").find(".hiddenSOLDSign").css("opacity", "1");
         };
     }
 

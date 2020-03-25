@@ -113,21 +113,38 @@ body {
         // margin-bottom: 2rem;
         // @include border;
         height: 15rem;
-        width: 100%;
         // display: block;
         // align-items: center;
-        .timeSlotButtons {
-            box-shadow: none;
-            border: 0px solid $borderTransparent;
-            height: 4rem;
-            // @include border;
-            // text-align: center;
+        .additonalClassForClosestMethod {
             width: 20rem;
-            border-radius: 0.7rem;
-            // display: block;
-            background-color: $buttonColorAvailableForSignUp;
-            color: black;
+            position: relative;
         }
+    }
+}
+
+.timeSlotButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    // width: 20rem;
+    width: 100%;
+    box-shadow: none;
+    border: 0px solid $borderTransparent;
+    height: 4rem;
+    border-radius: 0.7rem;
+    background-color: $buttonColorAvailableForSignUp;
+    color: black;
+    .times {
+        flex: 1 0 75%;
+    }
+    .counters {
+        flex: 1 0 25%;
+        border-left: 1px solid $borderTransparent;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -159,12 +176,24 @@ body {
 }
 
 //add a class that will be added to the list box
-.thisClassWillBeToggledToHighlightClientListBox {
-    background-color: rgba($color: $buttonColorSelected, $alpha: 0.2);
-    // color: rebeccapurple;
-}
+// .thisClassWillBeToggledToHighlightClientListBox {
+//     background-color: rgba(242, 107, 199, 0.133);
+//     color: rebeccapurple;
+// }
 
 .hiddenClassForArray {
     display: none;
 }
 
+.hiddenSOLDSign {
+    // display: block;
+    opacity: 0;
+    // display: none;
+    color: red;
+    position: absolute;
+    right: -2.9rem;
+    top: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    rotate: -35deg;
+}
