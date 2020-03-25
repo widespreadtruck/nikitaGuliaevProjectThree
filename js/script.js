@@ -88,10 +88,9 @@ $(function() {
                 //grabs name from prompt
                 const grabbedClientName = askForClientName();
 
-                //adds the grabbed name to the array
                 arrayPathThreeLevelsDeep.push(grabbedClientName);
-                console.log(grabbedClientName);
-                console.log(arrayPathThreeLevelsDeep);
+
+                // console.log(grabbedClientName);
 
                 //show how many people are signed up for a particular class
                 if (arrayPathThreeLevelsDeep.length < 7) {
