@@ -88,10 +88,14 @@ $(function() {
                 //grabs name from prompt
                 const grabbedClientName = askForClientName();
 
-                arrayPathThreeLevelsDeep.push(grabbedClientName);
+                if (grabbedClientName.trim().length === 0){
+                    return alert("Hey! Stop it, Safi! Type a REAL name!");
+                } else {
+                    arrayPathThreeLevelsDeep.push(grabbedClientName);
+                };
 
-                // console.log(grabbedClientName);
 
+                
                 //show how many people are signed up for a particular class
                 if (arrayPathThreeLevelsDeep.length < 7) {
                     $(".selectedButtonChangesColor").closest(".timeSlotButtons").find(".counters").text(`${arrayPathThreeLevelsDeep.length}/6`);
