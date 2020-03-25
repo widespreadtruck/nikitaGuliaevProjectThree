@@ -42,31 +42,27 @@ $(function() {
         timeSlotButtons.not(this).removeClass("selectedButtonChangesColor");
 
         const toggledObject = $(".selectedButtonChangesColor");
-        console.log(`length of toggled class: ${toggledObject.length}`);
+        // console.log(`length of toggled class: ${toggledObject.length}`);
 
         //if toggled class exists in the DOM do the following:
         if (toggledObject.length === 1) {
             //find and save a text node representing the DAY:
             const dayForTheArrayNavigation = $(".selectedButtonChangesColor").closest(".dayContainer").find(".dayContainerHeaderBoxParagraphs").text();
-            console.log(`dayForTheArrayNavigation: ${dayForTheArrayNavigation}`); //Monday
+            // console.log(`dayForTheArrayNavigation: ${dayForTheArrayNavigation}`); //Monday
 
             //find and save a text node representing the TIME:
             const timeForTheArrayNavigation = $(".selectedButtonChangesColor").closest(".additonalClassForClosestMethod").find(".hiddenClassForArray").text();
-            console.log(`timeForTheArrayNavigation: ${timeForTheArrayNavigation}`); //nineToTenAmClass
+            // console.log(`timeForTheArrayNavigation: ${timeForTheArrayNavigation}`); //nineToTenAmClass
 
             //find and save a text node representing the text written on the selected button:
             const timeOnTheTimeSlotButton = $(".selectedButtonChangesColor").closest(".timeSlotButtons").find(".times").text();
-            console.log(`timeOnTheTimeSlotButton: ${timeOnTheTimeSlotButton}`); //9am-10am | 0/6
+            // console.log(`timeOnTheTimeSlotButton: ${timeOnTheTimeSlotButton}`); //9am-10am | 0/6
     
     
             const arrayPathThreeLevelsDeep = weekClientList[dayForTheArrayNavigation][timeForTheArrayNavigation];
-            console.log(arrayPathThreeLevelsDeep);
+            // console.log(arrayPathThreeLevelsDeep);
 
             $(".clientListContainer").css("background-color", "rgba(209, 119, 5, 0.1)");
-            // $(".clientListContainerHeaderBox").css("border-bottom", "1px solid black");
-            // //insert the Day and Time values in the Header of the client list container
-            // // console.log(`timeSlotButtonsBackgroundColor: ${timeSlotButtonsBackgroundColor}`);
-            // //rgb(209, 119, 5)
 
             selectSpanForDay.text(dayForTheArrayNavigation).css("color", "blue");
             selectSpanForTime.text(timeOnTheTimeSlotButton).css("color", "blue");
@@ -84,9 +80,7 @@ $(function() {
             addClientButton.off().on("click", function (event) {
                 //preventing default
                 event.preventDefault();
-                //DO I NEED a "PREVENTDEFAULT" HERE?
 
-                console.log(event.target);
                 const askForClientName = function () {
                     return prompt("Type in client's name");
                 };
@@ -100,10 +94,14 @@ $(function() {
                 console.log(arrayPathThreeLevelsDeep);
 
                 //show how many people are signed up for a particular class
-                $(".selectedButtonChangesColor").closest(".timeSlotButtons").find(".counters").text(`${arrayPathThreeLevelsDeep.length}/6`);
+                if (arrayPathThreeLevelsDeep.length < 7) {
+                    $(".selectedButtonChangesColor").closest(".timeSlotButtons").find(".counters").text(`${arrayPathThreeLevelsDeep.length}/6`);
+                };
                 
                 const arrayLength = arrayPathThreeLevelsDeep.length - 1;
-                placeForTheListOfClients.append(`<li>${arrayPathThreeLevelsDeep[arrayLength]}</li>`);
+                if (arrayLength < 6) {
+                    placeForTheListOfClients.append(`<li>${arrayPathThreeLevelsDeep[arrayLength]}</li>`);
+                };
                 
                 classFullMessage(arrayPathThreeLevelsDeep);
             });
@@ -122,6 +120,7 @@ $(function() {
             //and show the SOLD sign
             alert("Class is full. Congratulations!");
             $(".selectedButtonChangesColor").closest(".additonalClassForClosestMethod").find(".hiddenSOLDSign").css("opacity", "1");
+            addClientButton.attr("disabled", true);
         };
     }
 
