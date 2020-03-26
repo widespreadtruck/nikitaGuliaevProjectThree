@@ -2606,9 +2606,15 @@ body {
   body .pageTitle h1 {
     margin: 2rem 0;
     padding: 0;
-    text-align: center; }
+    text-align: center;
+    font-size: 2.5rem; }
 
 .wrapper {
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(6%, rgba(253, 45, 132, 0.211255)), color-stop(82%, rgba(34, 117, 195, 0.17945)));
+  background: -webkit-linear-gradient(bottom, rgba(253, 45, 132, 0.211255) 6%, rgba(34, 117, 195, 0.17945) 82%);
+  background: -o-linear-gradient(bottom, rgba(253, 45, 132, 0.211255) 6%, rgba(34, 117, 195, 0.17945) 82%);
+  background: linear-gradient(0deg, rgba(253, 45, 132, 0.211255) 6%, rgba(34, 117, 195, 0.17945) 82%);
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2621,7 +2627,7 @@ body {
   align-items: center; }
 
 .dayContainer, .clientListContainer {
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.5);
   width: 30rem;
   height: 20rem;
   font-size: 1.6rem;
@@ -2663,8 +2669,9 @@ body {
     padding: 0; }
 
 .dayContainerHeaderBox, .clientListContainerHeaderBox {
-  border-bottom: 1px solid black;
-  height: 5rem; }
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  height: 5rem;
+  font-size: 2rem; }
 
 .dayContainerBodyBox {
   height: 100%; }
@@ -2682,17 +2689,55 @@ body {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    height: 15rem;
-    width: 100%; }
-    .dayContainerBodyBox .dayContainerBodyBoxButtons .timeSlotButtons {
-      height: 4rem;
+    height: 15rem; }
+    .dayContainerBodyBox .dayContainerBodyBoxButtons .additonalClassForClosestMethod {
       width: 20rem;
-      border-radius: 0.7rem;
-      background-color: #0de55a;
-      color: black; }
+      position: relative; }
+
+.timeSlotButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 0px solid rgba(0, 0, 0, 0.5);
+  height: 4rem;
+  border-radius: 0.7rem;
+  background-color: rgba(13, 229, 90, 0.8);
+  color: black; }
+  .timeSlotButtons .times {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 75%;
+    flex: 1 0 75%; }
+  .timeSlotButtons .counters {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 25%;
+    flex: 1 0 25%;
+    border-left: 1px solid rgba(0, 0, 0, 0.5);
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
 
 .selectedButtonChangesColor {
-  background-color: #d17705 !important; }
+  background-color: rgba(209, 119, 5, 0.5) !important; }
 
 .addClientNameButtonContainer {
   display: -webkit-box;
@@ -2715,10 +2760,18 @@ body {
     padding: 0;
     margin: 0;
     border-radius: 0.5rem;
-    font-size: 1.4rem; }
-
-.thisClassWillBeToggledToHighlightClientListBox {
-  background-color: rgba(209, 119, 5, 0.2); }
+    font-size: 1.4rem;
+    border: none; }
 
 .hiddenClassForArray {
   display: none; }
+
+.hiddenSOLDSign {
+  opacity: 0;
+  color: red;
+  position: absolute;
+  right: -4.8rem;
+  top: 1.6rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  rotate: -35deg; }

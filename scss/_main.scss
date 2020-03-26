@@ -2,8 +2,10 @@
     border: 1px solid red;
 }
 
-$buttonColorAvailableForSignUp: rgb(13, 229, 90); 
-$buttonColorSelected: rgb(209, 119, 5); 
+$buttonColorAvailableForSignUp: rgba(13, 229, 90, 0.8); 
+$buttonColorSelected: rgba(209, 119, 5, 0.5); 
+$borderTransparent: rgba(0, 0, 0, 0.5);
+
 
 html {
     font-size: 62.5%;
@@ -25,6 +27,7 @@ body {
             margin: 2rem 0;
             padding: 0;
             text-align: center;
+            font-size: 2.5rem;
             // margin-top: 2rem;
         }
     }
@@ -32,6 +35,8 @@ body {
 
 // two box styles + header of the boxes
 .wrapper {
+    background: linear-gradient(0deg, rgba(253,45,132,0.2112553724928367) 6%, rgba(34,117,195,0.1794502148997135) 82%);
+    height: 100%;
     // @include border;
     // width: 90%;
     // text-align: center;
@@ -45,7 +50,7 @@ body {
 }
 
 .dayContainer, .clientListContainer {
-    border: 1px solid black;
+    border: 1px solid $borderTransparent;
     width: 30rem;
     height: 20rem;
     font-size: 1.6rem;
@@ -69,6 +74,7 @@ body {
 
 
 .clientListContainer {
+    // border: rgba(0, 0, 0, 0.804);
     // flex: 1 0 40%;
     .clientListContainerHeaderBox {
         display: flex;
@@ -85,8 +91,9 @@ body {
 }
 
 .dayContainerHeaderBox, .clientListContainerHeaderBox {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $borderTransparent;
     height: 5rem;
+    font-size: 2rem;
 }
 
 
@@ -106,19 +113,38 @@ body {
         // margin-bottom: 2rem;
         // @include border;
         height: 15rem;
-        width: 100%;
         // display: block;
         // align-items: center;
-        .timeSlotButtons {
-            height: 4rem;
-            // @include border;
-            // text-align: center;
+        .additonalClassForClosestMethod {
             width: 20rem;
-            border-radius: 0.7rem;
-            // display: block;
-            background-color: $buttonColorAvailableForSignUp;
-            color: black;
+            position: relative;
         }
+    }
+}
+
+.timeSlotButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    // width: 20rem;
+    width: 100%;
+    box-shadow: none;
+    border: 0px solid $borderTransparent;
+    height: 4rem;
+    border-radius: 0.7rem;
+    background-color: $buttonColorAvailableForSignUp;
+    color: black;
+    .times {
+        flex: 1 0 75%;
+    }
+    .counters {
+        flex: 1 0 25%;
+        border-left: 1px solid $borderTransparent;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -146,16 +172,30 @@ body {
         margin: 0;
         border-radius: 0.5rem;
         font-size: 1.4rem;
+        // box-shadow: none;
+        border: none;
     }
 }
 
 //add a class that will be added to the list box
-.thisClassWillBeToggledToHighlightClientListBox {
-    background-color: rgba($color: $buttonColorSelected, $alpha: 0.2);
-    // color: rebeccapurple;
-}
+// .thisClassWillBeToggledToHighlightClientListBox {
+//     background-color: rgba(242, 107, 199, 0.133);
+//     color: rebeccapurple;
+// }
 
 .hiddenClassForArray {
     display: none;
 }
 
+.hiddenSOLDSign {
+    // display: block;
+    opacity: 0;
+    // display: none;
+    color: red;
+    position: absolute;
+    right: -4.8rem;
+    top: 1.6rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    rotate: -35deg;
+}
