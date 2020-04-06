@@ -2761,7 +2761,7 @@ body {
     margin: 0;
     border-radius: 0.5rem;
     font-size: 1.4rem;
-    border: none; }
+    border: 1px solid rgba(0, 0, 0, 0.5); }
 
 .hiddenClassForArray {
   display: none; }
@@ -2774,4 +2774,10 @@ body {
   top: 1.6rem;
   font-size: 1.6rem;
   font-weight: 700;
-  rotate: -35deg; }
+  rotate: -35deg;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .hiddenSOLDSign span {
+    border: 1px solid red;
+    padding: 3px 0 0 0; }
