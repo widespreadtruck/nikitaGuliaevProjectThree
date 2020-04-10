@@ -102,18 +102,17 @@ $(function() {
     //till when the name is added to the array
     const promptLogic = function (array) {
         //show a prompt when the ADD CLIENT button is clicked
-        const askForClientName = function () {
+        let askForClientName = function () {
             return prompt("Type in client's name");
         };
         //grab a string of text from prompt
         const grabbedClientName = askForClientName();
         //if string is empty show an alert
         if (grabbedClientName.trim().length === 0) {
-            //updates the variable holding a string of text and prevents from adding the name entered
-            //in the previous prompt
+            // updates the variable holding a string of text and prevents from adding the name entered in the previous prompt
+            alert("Hey! Stop it, Safi! Type at least something!");
             grabbedClientName = null;
-            return alert("Hey! Stop it, Safi! Type a REAL name!");
-        } else {
+        } else if (grabbedClientName.trim().length > 0){
             //if there is at least one symbol - add that text string to the appropriate array
             array.push(grabbedClientName);
         };

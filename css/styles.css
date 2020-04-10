@@ -2770,11 +2770,13 @@ body {
   opacity: 0;
   color: red;
   position: absolute;
-  right: -4.8rem;
-  top: 1.6rem;
+  right: 1.6rem;
+  top: 0.8rem;
   font-size: 1.6rem;
   font-weight: 700;
-  rotate: -35deg;
+  -webkit-transform: rotate(-35deg);
+  -ms-transform: rotate(-35deg);
+  transform: rotate(-35deg);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }
