@@ -31,7 +31,7 @@ $(function() {
     //when a green button is selected (tapped on) do the following:
     //highlight the section down below 
     //names are added to this section by clicking on ADD CLIENT button
-    //6 names are a maximum
+    //6 names maximum
     //add SOLD OUT sign when the class is full and it says 6/6 on the right side of the buttons
     timeSlotButtons.on("click", function(){
         //highlight the TimeSlot button when selected (tapped on)
