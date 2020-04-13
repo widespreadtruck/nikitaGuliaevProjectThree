@@ -2600,8 +2600,8 @@ html {
   font-size: 0.8rem; }
 
 body {
-  margin-left: 2rem;
   margin-top: 2rem;
+  text-align: center;
   background-color: #efface; }
   body .pageTitle h1 {
     margin: 2rem 0;
@@ -2738,7 +2738,7 @@ body {
     align-items: center; }
 
 .selectedButtonChangesColor {
-  background-color: rgba(209, 119, 5, 0.5) !important; }
+  background: rgba(209, 119, 5, 0.5) !important; }
 
 .addClientNameButtonContainer {
   display: -webkit-box;
@@ -2771,7 +2771,7 @@ body {
   opacity: 0;
   color: red;
   position: absolute;
-  right: 1.6rem;
+  right: 2.7rem;
   top: 0.8rem;
   font-size: 1.6rem;
   font-weight: 700;

@@ -27,6 +27,7 @@ $(function() {
     //body of the Client LIst container where names are printed
     const placeForTheListOfClients = $(".namesAddedToTimeSlotSoFar");
 
+    const buttons = $('.additonalClassForClosestMethod');
 
     //when a green button is selected (tapped on) do the following:
     //highlight the section down below 
@@ -62,8 +63,13 @@ $(function() {
             selectSpanForDay.text(dayForTheArrayNavigation).css("color", "blue");
             selectSpanForTime.text(timeOnTheTimeSlotButton).css("color", "blue");
 
+            console.log(arrayPathThreeLevelsDeep.length);
             //activate the ADD CLIENT button
-            addClientButton.attr("disabled", false);
+            if (arrayPathThreeLevelsDeep.length <= 5) {
+                addClientButton.attr("disabled", false);
+            } else if (arrayPathThreeLevelsDeep.length >= 6){
+                addClientButton.attr("disabled", true);
+            };
 
             //populate the DAY/CLASS section with the list of names when one of the TimeSlot buttons is selected
             placeForTheListOfClients.empty();
