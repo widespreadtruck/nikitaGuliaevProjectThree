@@ -2601,8 +2601,10 @@ html {
 
 body {
   margin-top: 2rem;
+  margin-bottom: 3rem;
   background-color: #efface;
-  text-align: center; }
+  text-align: center;
+  scale: 1; }
   body .pageTitle h1 {
     margin: 2rem 0;
     padding: 0;
