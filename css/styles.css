@@ -2601,8 +2601,8 @@ html {
 
 body {
   margin-top: 2rem;
-  text-align: center;
-  background-color: #efface; }
+  background-color: #efface;
+  text-align: center; }
   body .pageTitle h1 {
     margin: 2rem 0;
     padding: 0;
@@ -2667,6 +2667,9 @@ body {
   .clientListContainer .clientListContainerHeaderBox .clientListContainerHeaderBoxParagraphs {
     margin: 0;
     padding: 0; }
+
+.namesAddedToTimeSlotSoFar li {
+  text-align: left; }
 
 .dayContainerHeaderBox, .clientListContainerHeaderBox {
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
