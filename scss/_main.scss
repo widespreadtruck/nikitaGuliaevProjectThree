@@ -14,8 +14,8 @@ html {
 
 body {
     margin-top: 2rem;
-    text-align: center;
     background-color: rgba($color: #efface, $alpha: 1.0);
+    text-align: center;
     .pageTitle {
         h1 {
             margin: 2rem 0;
@@ -26,9 +26,9 @@ body {
     }
 }
 
-// .marvel-device.iphone8plus.gold {
-//     margin: 0 auto;
-// } 
+.marvel-device.iphone8plus.gold {
+    // margin: 0 auto;
+} 
 
 // two box styles + header of the boxes
 .wrapper {
@@ -71,6 +71,10 @@ body {
             padding: 0;
         }
     }
+}
+
+.namesAddedToTimeSlotSoFar li {
+    text-align: left;
 }
 
 .dayContainerHeaderBox, .clientListContainerHeaderBox {
