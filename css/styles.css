@@ -2600,8 +2600,8 @@ html {
   font-size: 0.8rem; }
 
 body {
-  margin-left: 2rem;
   margin-top: 2rem;
+  text-align: center;
   background-color: #efface; }
   body .pageTitle h1 {
     margin: 2rem 0;
@@ -2708,18 +2708,19 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  width: 100%;
+  width: 18.5rem;
   -webkit-box-shadow: none;
   box-shadow: none;
   border: 0px solid rgba(0, 0, 0, 0.5);
   height: 4rem;
   border-radius: 0.7rem;
   background-color: rgba(13, 229, 90, 0.8);
-  color: black; }
+  color: black;
+  margin: 0 auto; }
   .timeSlotButtons .times {
     -webkit-box-flex: 1;
-    -ms-flex: 1 0 75%;
-    flex: 1 0 75%; }
+    -ms-flex: 1 0 65%;
+    flex: 1 0 65%; }
   .timeSlotButtons .counters {
     -webkit-box-flex: 1;
     -ms-flex: 1 0 25%;
@@ -2737,7 +2738,7 @@ body {
     align-items: center; }
 
 .selectedButtonChangesColor {
-  background-color: rgba(209, 119, 5, 0.5) !important; }
+  background: rgba(209, 119, 5, 0.5) !important; }
 
 .addClientNameButtonContainer {
   display: -webkit-box;
@@ -2770,7 +2771,7 @@ body {
   opacity: 0;
   color: red;
   position: absolute;
-  right: 1.6rem;
+  right: 2.7rem;
   top: 0.8rem;
   font-size: 1.6rem;
   font-weight: 700;
